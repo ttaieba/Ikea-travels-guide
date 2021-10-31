@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 
 const AddNewService = () => {
 
-    const { register, reset, handleSubmit, watch, formState: { errors } } = useForm();
+    const { register, reset, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = data => {
 
         fetch(`https://lit-wildwood-88545.herokuapp.com/addServices`, {
@@ -29,8 +29,10 @@ const AddNewService = () => {
         <div>
             <h1>Add new services</h1>
 
+
+
             <form onSubmit={handleSubmit(onSubmit)}>
-                <input className="m-2"  {...register("img")} placeholder="Img url" />
+                <input defaultValue="https://demo.moxcreative.com/aventoura/wp-content/uploads/sites/64/elementor/thumbs/outdoor-adventure-toddler-e1631464343504-pd0igtq4r15yhp14mvuqeyu9lo55y27mzpl4k13ir0.jpg" className="m-2"  {...register("img")} placeholder="Img url" />
                 <br />
                 <input className="m-2" {...register("name")} placeholder="name" />
                 <br />

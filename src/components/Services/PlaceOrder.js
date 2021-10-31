@@ -13,7 +13,7 @@ const PlaceOrder = () => {
     const onSubmit = data => {
 
 
-        // ----trying but unable to conneted with mongo -------------
+        // ----trying but unable to conneted with mongo --- fail----------
         //const url= http://localhost:5000/myOrders
         // https://lit-wildwood-88545.herokuapp.com/myOrders
         // -----------------------------------
@@ -64,12 +64,16 @@ const PlaceOrder = () => {
 
     return (
         <div>
-            <Container className="mt-4 p-4">
-                <Row>
+            <Container className="mt-4 p-4 fluid">
+                <h5>Name: {user.displayName}</h5>
+                <p>Your email: {user.email}</p>
+                <Row className="g-4">
+
+
                     {/* <p>use this {id}</p> */}
 
                     {/* ----------------------------------------- */}
-                    <Col>
+                    <Col xs={12} md={6} className="" >
 
                         <Card style={{ width: '18rem' }}>
                             <Card.Img variant="top" src={servicess?.img} />
@@ -87,7 +91,7 @@ const PlaceOrder = () => {
 
                         </Card>
                     </Col>
-                    <Col>
+                    <Col xs={12} md={6} >
                         <form onSubmit={handleSubmit(onSubmit)}>
 
                             <input defaultValue={user.displayName} {...register("name")} />

@@ -35,7 +35,7 @@ const Login = () => {
             <Container className="my-5 py-5">
 
                 <Row>
-                    <Col className="bg-c p-4 " xs={12} md={6}>
+                    <Col className="bg-c p-4 " >
 
                         <h1 className="text-color p-4">Please Login</h1>
 
@@ -77,11 +77,7 @@ const Login = () => {
                         <p className="text-primary my-4"> a please Register Here</p>
 
                     </Col>
-                    <Col className="loging-img" xs={6} md={6}>
-                        <h1>Say hi, and let's start <br /> a good conversation.</h1>
-                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nam eum aperiam, odit fugiat culpa veniam consequuntur accusamus qui esse commodi!</p>
 
-                    </Col>
 
                 </Row>
 

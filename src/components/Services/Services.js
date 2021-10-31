@@ -8,15 +8,22 @@ const Services = () => {
     const [services, setServices] = useState([])
 
 
+
     useEffect(() => {
         fetch('https://lit-wildwood-88545.herokuapp.com/services')
             .then(res => res.json())
-            .then(data => setServices(data))
+            .then(data => {
+
+                setServices(data)
+
+            })
+
+
     }, [])
     // --------------------------------------------------------
     return (
         <div>
-            <Container>
+            <Container >
                 <div className="py-4 text-color">
                     <h5><small>EXPLORE GREAT PLACES
                     </small></h5>
