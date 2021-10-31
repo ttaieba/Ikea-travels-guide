@@ -13,8 +13,27 @@ const PlaceOrder = () => {
     const onSubmit = data => {
 
 
+        // ----trying but unable to conneted with mongo -------------
+        //const url= http://localhost:5000/myOrders
+        // https://lit-wildwood-88545.herokuapp.com/myOrders
+        // -----------------------------------
 
 
+        fetch('', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+            .then(res => res.json())
+            .then(result => {
+                if (result.insertedId) {
+                    alert('placed your order');
+
+                    reset();
+                }
+            })
     }
 
 
@@ -34,8 +53,7 @@ const PlaceOrder = () => {
             .then(result => {
                 if (result.deletedCount > 0) {
                     alert('delete confirmation')
-                    // const remainService = servicess.filter(service => service._id !== id)
-                    // SetServicess(remainService)
+
                 }
 
 
