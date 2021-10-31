@@ -12,6 +12,7 @@ import Features from "./components/Features/Features";
 import Login from "./components/Forms/Login";
 import Home from "./components/Home/Home";
 import ManageOrder from "./components/ManageOrders/ManageOrder";
+import MyOrders from "./components/MyOrders/MyOrders";
 import Notfound from "./components/Notfound/Notfound";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import PlaceOrder from "./components/Services/PlaceOrder";
@@ -77,6 +78,10 @@ function App() {
               <PlaceOrder></PlaceOrder>
             </PrivateRoute>
 
+
+            <PrivateRoute path="/myOrders">
+              <MyOrders></MyOrders>
+            </PrivateRoute>
 
 
             {/* -----------Loging --------------- */}

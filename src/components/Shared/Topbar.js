@@ -35,11 +35,15 @@ const Topbar = () => {
 
                         <Nav.Link as={Link} className="text-white" to="/features"> Features</Nav.Link>
 
-                        <Nav.Link as={Link} className="text-white" to="/manageOrder"> ManageOrder</Nav.Link>
+
 
 
                         {user?.email ? <div className="d-flex">
+                            <Nav.Link as={Link} className="text-white" to="/myOrders"> My Orders</Nav.Link>
+
                             <Nav.Link as={Link} className="text-white" to="/addService"> Add Services</Nav.Link>
+
+                            <Nav.Link as={Link} className="text-white" to="/manageOrder"> ManageOrder</Nav.Link>
 
                             <Button onClick={logout} className="me-3" variant="light">Logout</Button>
 

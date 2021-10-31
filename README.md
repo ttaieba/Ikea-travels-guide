@@ -1,14 +1,14 @@
-# Website itro "Ikea travels guide"
+# Website is about "Ikea travels guide"
  This website  property is all about " Ikea travels guide"
 
 This project was bootstrapped with [Create React App]
 use its won database as mongodb
 
-#
+
 
 In the project directory, you can run:
 
-# Live link " browse it"
+#  Visit the live link"
 
 you can browse it by click here.\
 Open [hhttps://ikea-project-d939c.web.app](https://ikea-project-d939c.web.app) to view it in the browser.
@@ -18,9 +18,9 @@ You will also see any link errors in the console.
 
 
 
-# Learn More
 
-What are use for make this site?
+
+# What we use for make this site?
 #react app
 *React Bootstraps for scc framework
 #Fontwasome for icon library
@@ -30,7 +30,7 @@ What are use for make this site?
 # Code source
 to get the code link visit the private github link.
 
-
+added it's won server 'MongoDB'
 
 # Deployment
 

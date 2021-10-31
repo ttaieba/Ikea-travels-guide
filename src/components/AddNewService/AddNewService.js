@@ -3,21 +3,21 @@ import { useForm } from "react-hook-form";
 
 const AddNewService = () => {
 
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const { register, reset, handleSubmit, watch, formState: { errors } } = useForm();
     const onSubmit = data => {
 
-        fetch(`http://localhost:5000/addServices`, {
+        fetch(`https://lit-wildwood-88545.herokuapp.com/addServices`, {
             method: "post",
             headers: { "content-type": "application/json" },
             body: JSON.stringify(data),
         })
             .then(res => res.json())
-            //     .then(result => console.log(result))
-            // console.log(data);
+
+
             .then(result => {
                 if (result.insertedId) {
                     alert(' Successfully added servs');
-
+                    reset()
 
                 }
             })

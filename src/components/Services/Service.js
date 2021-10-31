@@ -24,7 +24,7 @@ const Service = (props) => {
                             {des}
 
                         </Card.Text>
-                        <Link to={`/placeOrder/${_id}`}><Button variant="outline-warning"><FontAwesomeIcon icon={faShoppingBag} /> Place Order </Button> </Link>
+                        <Link to={`/placeOrder/${_id}`}><Button variant="outline-warning"><FontAwesomeIcon icon={faShoppingBag} /> Book Now </Button> </Link>
 
                     </Card.Body >
 
