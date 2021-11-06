@@ -15,16 +15,24 @@ const MyOrders = () => {
     }, [control]);
 
     const handleDelete = (id) => {
-        fetch(`https://lit-wildwood-88545.herokuapp.com/delteOrder/${id}`, {
-            method: "DELETE",
-        })
-            .then((res) => res.json())
-            .then((data) => {
-                if (data.deletedCount) {
-                    setControl(!control);
-                }
-            });
-        console.log(id);
+        const confirm = window.confirm('Are you want to delete it?');
+        if (confirm) {
+            fetch(`https://lit-wildwood-88545.herokuapp.com/delteOrder/${id}`, {
+                method: "DELETE",
+            })
+                .then((res) => res.json())
+                .then((data) => {
+                    if (data.deletedCount) {
+                        alert('deleted successfully');
+                        setControl(!control);
+                    }
+                });
+
+
+
+
+        }
+
     };
 
     return (
