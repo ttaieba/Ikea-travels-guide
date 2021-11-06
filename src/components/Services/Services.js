@@ -7,7 +7,7 @@ import Service from './Service';
 const Services = () => {
     const [services, setServices] = useState([])
 
-
+    // https://lit-wildwood-88545.herokuapp.com/services
 
     useEffect(() => {
         fetch('https://lit-wildwood-88545.herokuapp.com/services')
@@ -32,10 +32,11 @@ const Services = () => {
                 <Row xs={1} lg={3} className="g-4 common-bg py-4">
 
                     {
-                        services.map(service => <Service
+                        services.map((service, index) => <Service
 
                             key={service._id}
                             service={service}
+
 
 
                         ></Service>)

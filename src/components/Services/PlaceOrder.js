@@ -3,14 +3,31 @@ import { useForm } from 'react-hook-form';
 import { Button, Card, Col, Container, Row } from 'react-bootstrap';
 import { useParams } from 'react-router';
 import useAuth from '../../hooks/useAuth';
+import { Link } from 'react-router-dom';
+
 // -----------------------------------------
 const PlaceOrder = () => {
     const [servicess, SetServicess] = useState({})
     const { id } = useParams()
     const { user } = useAuth();
+
+    const email = user.email
+    const userName = user.displayName
+
+    useEffect(() => {
+        fetch(`https://lit-wildwood-88545.herokuapp.com/services/${id}`)
+            .then(res => res.json())
+            .then(data => SetServicess(data))
+
+    }, [])
+
     // -------------------hook form-----------------------
-    const { register, handleSubmit, reset, formState: { errors } } = useForm();
-    const onSubmit = data => {
+    const { register, handleSubmit, formState: { errors } } = useForm();
+    const onSubmit = (data) => {
+        data.email = email;
+        data.userName = userName;
+        data.status = "pending";
+
 
 
         // ----trying but unable to conneted with mongo --- fail----------
@@ -19,7 +36,7 @@ const PlaceOrder = () => {
         // -----------------------------------
 
 
-        fetch('', {
+        fetch('https://lit-wildwood-88545.herokuapp.com/myOrders', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -31,36 +48,10 @@ const PlaceOrder = () => {
                 if (result.insertedId) {
                     alert('placed your order');
 
-                    reset();
+
                 }
             })
     }
-
-
-    // --------------------------------------------
-    useEffect(() => {
-        fetch(`https://lit-wildwood-88545.herokuapp.com/services/${id}`)
-            .then(res => res.json())
-            .then(data => SetServicess(data))
-
-    }, [])
-
-
-    // delete orders-----------------------
-    const deletingservices = id => {
-        fetch(`https://lit-wildwood-88545.herokuapp.com/services/${id}`, { method: 'DELETE' })
-            .then(res => res.json())
-            .then(result => {
-                if (result.deletedCount > 0) {
-                    alert('delete confirmation')
-
-                }
-
-
-            })
-    }
-
-
 
     return (
         <div>
@@ -84,7 +75,7 @@ const PlaceOrder = () => {
                                     {servicess?.des}
 
 
-                                    <Button onClick={() => deletingservices(servicess?._id)} className="m-2 text-black" variant="outline-danger"> Cancle </Button>
+
                                 </Card.Text>
                             </Card.Body>
 
@@ -93,28 +84,48 @@ const PlaceOrder = () => {
                     </Col>
                     <Col xs={12} md={6} >
                         <form onSubmit={handleSubmit(onSubmit)}>
+                            <Row className="g-2">
+                                <Col xs={12} md={12} className="">
+                                    <h5>Client details</h5>
+                                    <input className=" w-75 " placeholder="cell " defaultValue="" {...register("cell")} />
 
-                            <input defaultValue={user.displayName} {...register("name")} />
-                            <br /><br />
-                            <input defaultValue={user.email} {...register("email", { required: true })} />
+                                    <br /><br />
+                                    <input className=" w-75 " placeholder="Address" defaultValue="" {...register("address")} />
 
-                            <br /><br />
-                            {errors.email && <span className="error">This field is required</span>}
-
-                            <input placeholder="cell " defaultValue="" {...register("cell")} />
-
-                            <br /><br />
-                            <input placeholder="Address" defaultValue="" {...register("address")} />
-
-                            <br /><br />
-                            <input placeholder="Country" defaultValue="" {...register("Country")} />
-
-                            <br /><br />
+                                    <br /><br />
+                                    <input className=" w-75 " placeholder="Country" defaultValue="" {...register("Country")} />
 
 
+                                </Col>
 
-                            <input className=" btn-primary p-2" type="submit" value="Place order" />
+                                <Col xs={12} md={12} >
+
+
+                                    <h5>Order details</h5>
+                                    <input className=" w-75 " defaultValue={servicess?.img}  {...register("img")} placeholder="Img url" />
+                                    <br /><br />
+                                    <input className=" w-75 " Value={servicess?.name} {...register("Servicename")} /> <br /> <br />
+
+
+                                    <input className=" w-75 " defaultValue={servicess?.price} {...register("price", { required: true })} />
+
+                                    <br /><br />
+                                    {errors.email && <span className="error">This field is required</span>}
+                                    <textarea className="py-4 w-75 " defaultValue={servicess?.des} {...register("des")} />
+
+
+
+                                    <br /><br />
+                                </Col>
+
+                            </Row>
+
+
+                            <input className=" btn-primary mt-4 p-2" type="submit" value="Place order" />
                         </form>
+                        <Link to="/home"><Button className="m-2 text-black" variant="outline-danger"> Back to Home </Button>
+                        </Link>
+
                     </Col>
 
                 </Row>
@@ -123,7 +134,7 @@ const PlaceOrder = () => {
 
 
 
-        </div>
+        </div >
     );
 };
 
